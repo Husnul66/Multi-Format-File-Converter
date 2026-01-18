@@ -1,3 +1,4 @@
 streamlit
+moviepy
 Pillow
 pdf2docx
