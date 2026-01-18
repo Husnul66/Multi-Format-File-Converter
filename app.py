@@ -86,4 +86,26 @@ if uploaded_file:
                         st.error("Sunucuda LibreOffice bulunamadı. packages.txt dosyasını kontrol et.")
                 elif target in ['mp3','wav'] and ext in ['.mp4','.m4a','.wav','.mp3']:
                     out_file = convert_media_ffmpeg(temp_path, target)
-                elif target in ['
+                elif target in ['png','jpg','pdf']:
+                    out_file = convert_image(temp_path, target)
+                else:
+                    st.warning("Bu dönüşüm desteklenmiyor.")
+
+            if out_file and os.path.exists(out_file):
+                st.success("Tamamlandı!")
+                
+                # --- KRİTİK DÜZELTME BURADA ---
+                # Dosyayı önce belleğe (RAM) okuyoruz, sonra butona veriyoruz.
+                # Bu yöntem 'Network Issue' hatasını çözer.
+                with open(out_file, "rb") as f:
+                    file_data = f.read()
+                    
+                st.download_button(
+                    label="İndir", 
+                    data=file_data, 
+                    file_name=os.path.basename(out_file),
+                    mime="application/octet-stream"
+                )
+                
+        except Exception as e:
+            st.error(f"Hata: {e}")
