@@ -2,3 +2,4 @@ streamlit
 moviepy
 Pillow
 pdf2docx
+opencv-python-headless
