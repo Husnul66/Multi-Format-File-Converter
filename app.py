@@ -6,7 +6,7 @@ from PIL import Image
 
 # --- STREAMLIT CLOUD (LINUX) UYUMLU SÜRÜM ---
 
-st.set_page_config(page_title="Süper Dönüştürücü", page_icon="⚡", layout="centered")
+st.set_page_config(page_title="Husnu Super Dönüştürücü", page_icon="⚡", layout="centered")
 
 # Geçici klasör ayarları
 def setup_folders():
@@ -97,4 +97,5 @@ if uploaded_file:
                 with open(out_file, "rb") as f:
                     st.download_button("İndir", f, file_name=os.path.basename(out_file))
         except Exception as e:
+
             st.error(f"Hata: {e}")
