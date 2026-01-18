@@ -1,2 +1,3 @@
 streamlit
 Pillow
+pdf2docx
