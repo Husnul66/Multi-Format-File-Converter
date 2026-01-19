@@ -72,7 +72,7 @@ if 'setup_done' not in st.session_state:
     st.session_state['setup_done'] = True
 
 # PDF dosya türünü de yüklemeye izin veriyoruz
-uploaded_file = st.file_uploader("Dosya Yükle", type=['docx','xlsx','pptx','pdf','png','jpg','mp4','mp3','wav'])
+uploaded_file = st.file_uploader("Dosya Yükle", type=['docx','xlsx','pptx','pdf','png','jpg','mp4','mp3','wav','ppt'])
 
 if uploaded_file:
     temp_path = os.path.join("temp", uploaded_file.name)
@@ -90,7 +90,7 @@ if uploaded_file:
             with st.spinner('İşleniyor...'):
                 
                 # 1. Durum: Ofis -> PDF
-                if target == 'pdf' and ext in ['.docx','.xlsx','.pptx']:
+                if target == 'pdf' and ext in ['.docx','.xlsx','.pptx','.ppt']:
                     lo_cmd = get_libreoffice_command()
                     if lo_cmd: out_file = convert_document(temp_path, lo_cmd)
                     else: st.error("LibreOffice bulunamadı.")
@@ -122,3 +122,4 @@ if uploaded_file:
                 )
         except Exception as e:
             st.error(f"Bir hata oluştu: {e}")
+
