@@ -61,7 +61,7 @@ def convert_image(input_path, target_ext):
     return output_path
 
 # --- ARAYÜZ VE MANTIK ---
-st.title("⚡ Husnu Super Dönüştürücü")
+st.title("⚡ Super Dönüştürücü")
 st.caption("PDF ↔ Word | Video ➡️ Ses | Resim Çevirici")
 
 if 'setup_done' not in st.session_state:
@@ -148,3 +148,4 @@ if uploaded_file:
                     )
             except Exception as e:
                 st.error(f"Bir hata oluştu: {e}")
+
